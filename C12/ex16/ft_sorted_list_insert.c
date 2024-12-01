@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sorted_list_insert.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlongin <jlongin@student.42.fr>            +#+  +:+       +#+        */
+/*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 13:05:43 by jlongin           #+#    #+#             */
-/*   Updated: 2024/12/01 14:14:43 by jlongin          ###   ########.fr       */
+/*   Created:   by Just'                               #+#    #+#             */
+/*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
@@ -27,7 +27,6 @@ void	ft_sorted_list_insert_at_start(t_list **begin_list, t_list *new)
 {
 	new->next = *begin_list;
 	*begin_list = new;
-	return ;
 }
 
 void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)())

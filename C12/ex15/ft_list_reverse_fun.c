@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlongin <jlongin@student.42.fr>            +#+  +:+       +#+        */
+/*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 12:25:55 by jlongin           #+#    #+#             */
-/*   Updated: 2024/12/01 12:59:09 by jlongin          ###   ########.fr       */
+/*   Created:   by Just'                               #+#    #+#             */
+/*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
-#include <stdlib.h>
 
 t_list	*ft_list_at(t_list *begin_list, size_t n)
 {

@@ -24,26 +24,29 @@ RESET			= "\033[0m"
 GREEN			= "\033[32m"	# Green
 RED			= "\033[31m"	# Red
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 	@echo $(GREEN)"--- EXECUTABLE ./$(NAME) is ready ---"$(RESET)
 
-clean :
+clean:
 	@rm -f $(OBJ)
 
-fclean : clean
+fclean: clean
 	@rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
-rf : re
+rf: re
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
 	@echo $(RED)"--- EXECUTABLE ./$(NAME) is removed ---"$(RESET)
 
 s:
 	ls -lh $(NAME)
+
+h:
+	head -n 18 main.c
 
 .PHONY: all clean fclean re rf

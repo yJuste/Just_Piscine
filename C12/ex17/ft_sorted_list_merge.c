@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sorted_list_merge.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlongin <jlongin@student.42.fr>            +#+  +:+       +#+        */
+/*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 14:19:15 by jlongin           #+#    #+#             */
-/*   Updated: 2024/12/01 15:19:41 by jlongin          ###   ########.fr       */
+/*   Created:   by Just'                               #+#    #+#             */
+/*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
@@ -42,7 +42,8 @@ void	ft_sorted_list_insert(t_list **begin_list1, t_list *list2, int (*cmp)())
 	prev->next = list2;
 }
 
-void	ft_sorted_list_merge(t_list **begin_list1, t_list *begin_list2, int (*cmp)())
+void	ft_sorted_list_merge(t_list **begin_list1, t_list *begin_list2,
+		int (*cmp)())
 {
 	t_list		*next;
 

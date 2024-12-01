@@ -6,7 +6,7 @@
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created:   by Just'                               #+#    #+#             */
-/*   Updated: 2024/11/29 12:17:52 by jlongin          ###   ########.fr       */
+/*   Updated:   by Just'                              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
@@ -19,7 +19,6 @@ void	ft_list_reverse(t_list **begin_list)
 
 	prev = NULL;
 	cur = *begin_list;
-	next = NULL;
 	while (cur)
 	{
 		next = cur->next;
