@@ -6,16 +6,16 @@
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created:   by Just'                               #+#    #+#             */
-/*   Updated:   by Just'                              ###   ########.fr       */
+/*   Updated: 2024/11/28 18:32:15 by jlongin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
 
 t_list	*ft_list_last(t_list *begin_list)
 {
-	if (begin_list == NULL)
+	if (!begin_list)
 		return (NULL);
-	while (begin_list->next != NULL)
+	while (begin_list->next)
 		begin_list = begin_list->next;
 	return (begin_list);
 }

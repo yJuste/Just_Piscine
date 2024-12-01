@@ -6,7 +6,7 @@
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created:   by Just'                               #+#    #+#             */
-/*   Updated:   by Just'                              ###   ########.fr       */
+/*   Updated: 2024/11/29 11:08:45 by jlongin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
@@ -15,7 +15,6 @@ void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
 {
 	t_list		*tmp;
 
-	tmp = NULL;
 	while (begin_list)
 	{
 		tmp = begin_list->next;

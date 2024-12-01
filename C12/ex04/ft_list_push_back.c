@@ -6,7 +6,7 @@
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created:   by Just'                               #+#    #+#             */
-/*   Updated:   by Just'                              ###   ########.fr       */
+/*   Updated: 2024/11/29 10:56:18 by jlongin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
@@ -19,7 +19,7 @@ void	ft_list_push_back(t_list **begin_list, void *data)
 	elem = ft_create_elem(data);
 	if (!elem)
 		return ;
-	if (*begin_list == NULL)
+	if (!(*begin_list))
 		ft_list_push_front(begin_list, data);
 	else
 	{

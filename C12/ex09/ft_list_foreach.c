@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:                                            +#+  +:+       +#+        */
+/*   By: jlongin <jlongin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created:   by Just'                               #+#    #+#             */
-/*   Updated: 2024/11/28 18:18:12 by jlongin          ###   ########.fr       */
+/*   Created: 2024/11/29 13:15:27 by jlongin           #+#    #+#             */
+/*   Updated: 2024/11/29 13:21:27 by jlongin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
 
-t_list	*ft_create_elem(void *data)
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-	t_list		*new;
-
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->data = data;
-	new->next = NULL;
-	return (new);
+	while (begin_list)
+	{
+		(*f)(begin_list->data);
+		begin_list = begin_list->next;
+	}
 }

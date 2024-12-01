@@ -6,7 +6,7 @@
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created:   by Just'                               #+#    #+#             */
-/*   Updated:   by Just'                              ###   ########.fr       */
+/*   Updated: 2024/11/28 18:28:34 by jlongin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_list.h"
@@ -16,7 +16,7 @@ int	ft_list_size(t_list *begin_list)
 	int		i;
 
 	i = 0;
-	while (begin_list != NULL)
+	while (begin_list)
 	{
 		begin_list = begin_list->next;
 		i++;
