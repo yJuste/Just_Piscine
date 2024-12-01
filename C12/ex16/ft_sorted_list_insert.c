@@ -42,11 +42,11 @@ void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)())
 	new = ft_create_elem(data);
 	if (!new)
 		return ;
-	if (!cur || (*cmp)(cur->data, new->data) > 0)
+	if (!cur || cmp(cur->data, new->data) > 0)
 		return (ft_sorted_list_insert_at_start(begin_list, new));
 	while (cur)
 	{
-		if ((*cmp)(cur->data, new->data) > 0)
+		if (cmp(cur->data, new->data) > 0)
 		{
 			prev->next = new;
 			new->next = cur;

@@ -23,7 +23,7 @@ void	ft_list_sort(t_list **begin_list, int (*cmp)())
 	start = *begin_list;
 	while (cur->next)
 	{
-		if ((*cmp)(cur->data, cur->next->data) > 0)
+		if (cmp(cur->data, cur->next->data) > 0)
 		{
 			x = cur->data;
 			cur->data = cur->next->data;

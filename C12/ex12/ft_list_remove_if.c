@@ -21,13 +21,13 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref,
 	prev = NULL;
 	while (cur)
 	{
-		if ((*cmp)(cur->data, data_ref) == 0)
+		if (cmp(cur->data, data_ref) == 0)
 		{
 			if (prev)
 				prev->next = cur->next;
 			else
 				*begin_list = cur->next;
-			(*free_fct)(cur->data);
+			free_fct(cur->data);
 			free(cur);
 			if (prev)
 				cur = prev->next;

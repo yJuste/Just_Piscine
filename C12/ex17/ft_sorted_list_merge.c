@@ -26,11 +26,11 @@ void	ft_sorted_list_insert(t_list **begin_list1, t_list *list2, int (*cmp)())
 	if (!(*begin_list1))
 		return ;
 	cur = *begin_list1;
-	if (!cur || (*cmp)(cur->data, list2->data) > 0)
+	if (!cur || cmp(cur->data, list2->data) > 0)
 		return (ft_sorted_list_insert_at_start(begin_list1, list2));
 	while (cur)
 	{
-		if ((*cmp)(cur->data, list2->data) > 0)
+		if (cmp(cur->data, list2->data) > 0)
 		{
 			prev->next = list2;
 			list2->next = cur;
