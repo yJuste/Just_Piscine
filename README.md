@@ -5,7 +5,7 @@ Voici ma piscine C 42 personnelle. Les exos sont exclusivement à des fins acad�
 
 // INTRO
 
-Les exos qui vous sont proposés ont été modifié et avancé. Cela signifie que certains exos sont susceptibles d'avoir de petites erreurs ou que certains codes ne soient pas optimisés. Merci de prendre en compte ce message.
+Les exos qui vous sont proposés ont été modifié et avancé suite à la 1ere piscine. Cela signifie que certains exos sont susceptibles d'avoir de petites erreurs ou que certains codes ne soient pas optimisés. Merci de prendre en compte ce message.
 
 /. PISCINE
 
