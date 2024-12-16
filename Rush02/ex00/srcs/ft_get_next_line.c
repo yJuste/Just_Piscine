@@ -10,112 +10,52 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*   • Read a line from a file.                                               */
-/*        -> ft_strchr, ft_strlen, ft_strjoin                                 */
-/*        -> malloc, free, buffer, read                                       */
 /* ************************************************************************** */
 #include "../includes/main.h"
 #include "../includes/ft_get_next_line.h"
 
-// ---------------PROTOTYPE-------------------
+// --------------------PROTOTYPE-------------------
 char	*ft_get_next_line(int fd);
-char	*ft_read_f_save(int fd, char *f_save);
-char	*ft_get_line(char *f_save);
-char	*ft_next_line(char *f_save);
-// -------------------------------------------
+int		ft_read_buffer(t_buf *buf, int fd);
+// ------------------------------------------------
 
 char	*ft_get_next_line(int fd)
 {
-	char		*line;
-	static char	*f_save;
+	static t_buf	buf;
+	char			line[50000];
+	int				i;
 
-	if (fd < 0 || BUFFER_GET_LINE <= 0)
-		return (0);
-	f_save = ft_read_f_save(fd, f_save);
-	if (!f_save)
+	i = 0;
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = ft_get_line(f_save);
-	f_save = ft_next_line(f_save);
-	if (!line || !*line)
+	while (1)
 	{
-		free(line);
-		return (NULL);
-	}
-	return (line);
-}
-
-char	*ft_read_f_save(int fd, char *f_save)
-{
-	char	*buff;
-	int		read_bytes;
-
-	buff = malloc(sizeof(char) * (BUFFER_GET_LINE + 1));
-	if (!buff)
-		return (NULL);
-	read_bytes = 1;
-	while (!ft_strchr(f_save, '\n') && read_bytes != 0)
-	{
-		read_bytes = read(fd, buff, BUFFER_GET_LINE);
-		if (read_bytes == -1)
+		if (buf.buf_pos >= buf.buf_read)
 		{
-			free(buff);
-			free(f_save);
-			return (NULL);
+			if (ft_read_buffer(&buf, fd) == -1)
+				return (NULL);
+			if (buf.buf_read == 0)
+				break ;
 		}
-		buff[read_bytes] = '\0';
-		f_save = ft_strjoin(f_save, buff);
+		line[i++] = buf.buffer[buf.buf_pos++];
+		if (line[i - 1] == '\n')
+			break ;
 	}
-	free(buff);
-	return (f_save);
+	line[i] = '\0';
+	if (i == 0)
+		return (NULL);
+	return (ft_strdup(line));
 }
 
-char	*ft_get_line(char *f_save)
+int	ft_read_buffer(t_buf *buf, int fd)
 {
-	char	*str;
-	int		i;
-
-	i = 0;
-	while (f_save[i] != '\0' && f_save[i] != '\n')
-		i++;
-	str = malloc(sizeof(char) * (i + 2));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (f_save[i] != '\0' && f_save[i] != '\n')
+	buf->buf_read = read(fd, buf->buffer, BUFFER_SIZE);
+	buf->buf_pos = 0;
+	if (buf->buf_read == -1)
 	{
-		str[i] = f_save[i];
-		i++;
+		buf->buf_read = 0;
+		buf->buf_pos = 0;
+		return (-1);
 	}
-	if (f_save[i] == '\n')
-	{
-		str[i] = f_save[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-char	*ft_next_line(char *f_save)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	i = 0;
-	while (f_save[i] && f_save[i] != '\n')
-		i++;
-	if (!f_save[i])
-	{
-		free(f_save);
-		return (NULL);
-	}
-	str = malloc(sizeof(char) * ft_strlen(f_save) - i + 1);
-	if (!str)
-		return (NULL);
-	i++;
-	j = 0;
-	while (f_save[i])
-		str[j++] = f_save[i++];
-	str[j] = '\0';
-	free(f_save);
-	return (str);
+	return (buf->buf_read);
 }

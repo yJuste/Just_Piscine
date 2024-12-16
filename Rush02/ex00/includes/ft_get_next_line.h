@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*   • Read a line from a file.                                               */
-/*        -> ft_strchr, ft_strlen, ft_strjoin                                 */
-/*        -> malloc, free, buffer, read                                       */
 /* ************************************************************************** */
 #ifndef FT_GET_NEXT_LINE_H
 # define FT_GET_NEXT_LINE_H
@@ -19,20 +17,21 @@
 // Buffer
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_GET_LINE 60 // BUFFER_MIN = 50 | BUFFER_MAX = 100
+#  define BUFFER_SIZE 60 // BUFFER_MIN = 50 | BUFFER_MAX = 100
 # endif
+
+// Structure
+
+typedef struct s_buf
+{
+	char	buffer[BUFFER_SIZE];
+	int		buf_read;
+	int		buf_pos;
+}	t_buf;
 
 // ft_get_next_line.c
 
-char		*ft_get_next_line(int fd);
-char		*ft_read_f_save(int fd, char *f_save);
-char		*ft_get_line(char *f_save);
-char		*ft_next_line(char *f_save);
-
-// In other libraries
-
-int			ft_strlen(const char *str);
-char		*ft_strchr(char *s, int c);
-char		*ft_strjoin(char *s1, char *s2);
+char	*get_next_line(int fd);
+int		ft_read_buffer(t_buf *buf, int fd);
 
 #endif

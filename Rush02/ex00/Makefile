@@ -1,7 +1,7 @@
 NAME = rush-02
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRC =	srcs/ft_get_next_line.c	\
 	srcs/ft_lib.c		\
@@ -21,8 +21,8 @@ SRC =	srcs/ft_get_next_line.c	\
 OBJ = $(SRC:.c=.o)
 
 RESET			= "\033[0m"
-GREEN			= "\033[32m"	# Green
-RED			= "\033[31m"	# Red
+GREEN			= "\033[92m"	# Green
+RED			= "\033[91m"	# Red
 
 all: $(NAME)
 
