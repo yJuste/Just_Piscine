@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_create_node.c                                :+:      :+:    :+:   */
+/*   btree_search_item.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 #include "ft_btree.h"
 
-t_btree	*btree_create_node(void *item)
+void	*btree_search_item(t_btree *root, void *data_ref,
+		int (*cmpf)(void *, void *))
 {
-	t_btree		*node;
+	void		*data;
 
-	node = malloc(sizeof(t_btree));
-	if (!node)
+	if (!root)
 		return (NULL);
-	node->item = item;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
+	data = NULL;
+	data = btree_search_item(root->left, data_ref, cmpf);
+	if (data)
+		return (data);
+	if (cmpf(root->item, data_ref) == 0)
+		return (root);
+	return (btree_search_item(root->right, data_ref, cmpf));
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_create_node.c                                :+:      :+:    :+:   */
+/*   btree_level_count.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:                                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 #include "ft_btree.h"
 
-t_btree	*btree_create_node(void *item)
+int	btree_level_count(t_btree *root)
 {
-	t_btree		*node;
+	int		left;
+	int		right;
 
-	node = malloc(sizeof(t_btree));
-	if (!node)
-		return (NULL);
-	node->item = item;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
+	if (!root)
+		return (0);
+	left = btree_level_count(root->left);
+	right = btree_level_count(root->right);
+	if (left > right)
+		return (1 + left);
+	else
+		return (1 + right);
 }
